@@ -1,17 +1,12 @@
-version: "3"
+version: "3.7"
 services:
-  # サーバー
-  php: 
-    build: .
+  php:
+    build:
+      context: ./docker
+    ports:
+      - "8081:80"
+    tty: true
+    stdin_open: true
     volumes:
-      - ./public:/var/www/html
-      - ./logs:/var/log/apache2
-    ports: 
-      - "80:80"
-
-    #environment:
-      # Most of cases don't need supply local IP address to docker container.
-      # If your debug Break Point doesn't work well, 
-      # try to replace 192.168.179.3 with your local IP address.
-      #XDEBUG_CONFIG: remote_host={{192.168.22.11}} 
-
+      - ./src:/var/www/html
+      - ./docker/php.ini:/usr/local/etc/php/php.ini

@@ -1,17 +1,16 @@
 {
     "version": "0.2.0",
     "configurations": [
-  
       {
-        "name": "Listen for XDebug",
-        "type": "php",
-        "request": "launch",
-        "stopOnEntry": true,
-        "port": 9001,
-        "log": true,
-        "pathMappings": {
-          "/var/www/html": "${workspaceRoot}/public"
-        }
+          "name": "XDebug on docker",
+          "type": "php",
+          "request": "launch",
+          "port": 9001,//php.iniで設定したxdebug用のport番号
+          "pathMappings": {
+              // {docker上のdocument root}:{ローカルのdocument root}
+              // "/var/www/html":"/Path/to/your/local/root"
+              "/var/www/html":"/Users/kei.kawano/work/tmp/docker-php-xdebug-vscode/src"
+          }
       }
     ]
   }
